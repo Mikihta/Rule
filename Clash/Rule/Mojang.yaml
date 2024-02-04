@@ -1,5 +1,5 @@
 payload:
-  - DOMAIN-SUFFIXcallersbane.com
-  - DOMAIN-SUFFIXminecraft.net
-  - DOMAIN-SUFFIXminecraftshop.com
-  - DOMAIN-SUFFIXmojang.com
+  - DOMAIN-SUFFIX,callersbane.com
+  - DOMAIN-SUFFIX,minecraft.net
+  - DOMAIN-SUFFIX,minecraftshop.com
+  - DOMAIN-SUFFIX,mojang.com
