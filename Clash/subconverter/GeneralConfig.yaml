@@ -43,5 +43,5 @@ rules:
   # - DOMAIN,r2s.asuka.ga,DIRECT
   # - SCRIPT,quic,REJECT
   # - SCRIPT,BilibiliUdp,REJECT
-  - DOMAIN,mirror.ghproxy.com,DIRECT
-  - PROCESS-NAME,Sky.exe,选择节点
+  # - DOMAIN,mirror.ghproxy.com,DIRECT
+  # - PROCESS-NAME,Sky.exe,选择节点
