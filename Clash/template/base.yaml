@@ -45,3 +45,4 @@ rules:
   # - SCRIPT,BilibiliUdp,REJECT
   # - DOMAIN,mirror.ghproxy.com,DIRECT
   # - PROCESS-NAME,Sky.exe,选择节点
+  - PROCESS-NAME,tailscale,DIRECT
