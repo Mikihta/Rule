@@ -3,6 +3,7 @@ name: Fetch GitHub Files
 on:
   schedule:
     - cron: '0 0 * * *'  # Runs every day at 00:00
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   fetch-and-commit:
