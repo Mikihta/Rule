@@ -1,0 +1,55 @@
+name: Fetch GitHub Files
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at 00:00
+
+jobs:
+  fetch-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Fetch GitHub files
+      run: |
+        import requests
+        import json
+
+        def fetch_github_files():
+            url = "https://api.github.com/repos/Koolson/Qure/contents/Other"
+            headers = {"Accept": "application/vnd.github.v3+json"}
+            response = requests.get(url, headers=headers)
+            files = response.json()
+
+            result = []
+            for file in files:
+                if file['type'] == 'file':
+                    result.append({
+                        'name': file['name'],
+                        'url': file['download_url']
+                    })
+
+            with open('github_files.json', 'w') as f:
+                json.dump(result, f)
+
+            print("GitHub files have been successfully fetched and saved to github_files.json")
+
+        fetch_github_files()
+      shell: python
+
+    - name: Commit and push if it changed
+      run: |
+        git diff
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Action"
+        git commit -am "Automated update" || exit 0
+        git push
