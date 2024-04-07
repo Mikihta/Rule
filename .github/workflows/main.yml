@@ -24,6 +24,7 @@ jobs:
       run: |
         import requests
         import json
+        import os
 
         def fetch_github_files():
             url = "https://api.github.com/repos/Koolson/Qure/contents/Other"
@@ -39,7 +40,9 @@ jobs:
                         'url': file['download_url']
                     })
 
-            with open('github_files.json', 'w') as f:
+            work_dir = os.getcwd()
+            file_path = os.path.join(work_dir, 'github_files.json')
+            with open(file_path, 'w') as f:
                 json.dump(result, f)
 
             print("GitHub files have been successfully fetched and saved to github_files.json")
@@ -52,5 +55,6 @@ jobs:
         git diff
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Action"
-        git commit -am "Automated update" || exit 0
+        git add .
+        git commit -m "Automated update" || exit 0
         git push
