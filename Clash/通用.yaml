@@ -32,6 +32,7 @@ dns:
     'rule-set:Rule_ChinaMax': [tls://223.5.5.5/dns-query,tls://1.12.12.12/dns-query,https://1.12.12.12/dns-query]
 
 proxies:
+# 填写代理
 
 proxy-providers:
 #机场1
